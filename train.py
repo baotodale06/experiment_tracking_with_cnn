@@ -1,6 +1,7 @@
 import hydra
 import pytorch_lightning as pl
 from omegaconf import DictConfig
+from omegaconf import OmegaConf
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 
@@ -21,7 +22,7 @@ def main(cfg: DictConfig):
         project=cfg.logging.project,
         entity=cfg.logging.entity,
         log_model=cfg.logging.log_model,
-        config=cfg
+        config=OmegaConf.to_container(cfg, resolve=True)
     )
 
     ckpt_dir = os.path.join(os.getcwd(), "checkpoints")

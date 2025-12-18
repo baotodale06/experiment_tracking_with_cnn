@@ -1,4 +1,5 @@
 defaults:
+  - _self_
   - model: lenet
   - optimizer: adam
   - training: default

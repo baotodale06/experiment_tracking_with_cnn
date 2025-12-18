@@ -7,7 +7,7 @@ import wandb
 from model import LeNetClassifier
 
 
-def init_zeros(m):
+def init_zero(m):
     if isinstance(m, (nn.Conv2d, nn.Linear)):
         nn.init.zeros_(m.weight)
         if m.bias is not None:
@@ -42,7 +42,9 @@ class LeNetLitModule(pl.LightningModule):
         elif cfg.model.init == "xavier":
             self.model.apply(init_xavier)
         elif cfg.model.init == "zero":
-            self.model.apply(init_zeros)
+            self.model.apply(init_zero)
+        else:
+            raise ValueError(f"Unknown init method: {cfg.model.init}")
 
         self.criterion = nn.CrossEntropyLoss()
 
