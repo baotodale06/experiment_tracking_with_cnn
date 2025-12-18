@@ -22,7 +22,8 @@ def main(cfg: DictConfig):
         project=cfg.logging.project,
         entity=cfg.logging.entity,
         log_model=cfg.logging.log_model,
-        config=OmegaConf.to_container(cfg, resolve=True)
+        config=OmegaConf.to_container(cfg, resolve=True),
+        name=f"{cfg.model.init}-job{cfg.hydra.job.num}"
     )
 
     ckpt_dir = os.path.join(os.getcwd(), "checkpoints")
