@@ -1,0 +1,4 @@
+monitor: val/loss      # metric to track
+mode: min              # "min" for loss, "max" for accuracy
+save_top_k: 1          # save ONLY the best model
+filename: best         # filename template
