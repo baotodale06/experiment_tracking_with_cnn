@@ -1,0 +1,8 @@
+defaults:
+  - model: lenet
+  - optimizer: adam
+  - training: default
+  - data: mnist
+  - logging: wandb
+
+seed: 42

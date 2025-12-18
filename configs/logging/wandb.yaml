@@ -1,0 +1,3 @@
+project: lenet-init-study
+entity: null        # or your W&B username/team
+log_model: true

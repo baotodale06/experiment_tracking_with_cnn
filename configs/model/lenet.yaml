@@ -1,0 +1,5 @@
+name: lenet
+num_classes: 10
+init: kaiming
+in_channels: 1
+img_size: 28

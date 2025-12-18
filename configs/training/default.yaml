@@ -1,0 +1,7 @@
+epochs: 20
+batch_size: 64
+
+checkpoint:
+  monitor: val/loss
+  mode: min
+  save_top_k: 1
