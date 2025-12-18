@@ -25,6 +25,11 @@ def init_xavier(m):
         if m.bias is not None:
             nn.init.zeros_(m.bias)
 
+def init_normal(m):
+    if isinstance(m, (nn.Conv2d, nn.Linear)):
+        nn.init.normal_(m.weight, mean=0.0, std=0.02)
+        if m.bias is not None:
+            nn.init.zeros_(m.bias)
 
 class LeNetLitModule(pl.LightningModule):
     def __init__(self, cfg):
@@ -43,6 +48,8 @@ class LeNetLitModule(pl.LightningModule):
             self.model.apply(init_xavier)
         elif cfg.model.init == "zero":
             self.model.apply(init_zero)
+        elif cfg.model.init == "normal":
+            self.model.apply(init_normal)
         else:
             raise ValueError(f"Unknown init method: {cfg.model.init}")
 
